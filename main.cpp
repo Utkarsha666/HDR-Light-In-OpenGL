@@ -130,16 +130,16 @@ int main(int argc, char** argv)
     {
         ////////////// Light Positions /////////////////////////////////////////////////////////
         std::vector<glm::vec3> lightPositions;
-        lightPositions.push_back(glm::vec3(0.0f, 0.5, -10.0f));
+        lightPositions.push_back(glm::vec3(0.0f, -1.5, -9.0f));
         lightPositions.push_back(glm::vec3(0.0f, 0.7f, 1.0f));
         lightPositions.push_back(glm::vec3(0.5f, 2.0f, -5.0f));
         lightPositions.push_back(glm::vec3(0.5f, 2.0f, -8.0f));
 /////////////////////////////// Light Colors /////////////////////////////////////////
         std::vector<glm::vec3> lightColors;
-        lightColors.push_back(glm::vec3(10.0f, 0.0f, 10.0f));
+        lightColors.push_back(glm::vec3(10.0f, 10.0f, 0.0f));
         lightColors.push_back(glm::vec3(1.0f, 1.0f, 1.0f));
-        lightColors.push_back(glm::vec3(0.0f, 0.0f, 5.0f));
         lightColors.push_back(glm::vec3(0.0f, 3.0f, 0.0f));
+        lightColors.push_back(glm::vec3(0.0f, 0.0f, 3.0f));
         
         GLfloat currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
@@ -202,7 +202,7 @@ int main(int argc, char** argv)
         lightBoxShader.Use();
         model = glm::mat4(1.0f);
         model = glm::scale(model, glm::vec3(1.0f, 0.1f, 0.1f));
-        model = glm::translate(model, glm::vec3(0.0f, -9.2f, -98.0f));
+        model = glm::translate(model, glm::vec3(0.0f, -9.2f, -99.4f));
         glUniformMatrix4fv(glGetUniformLocation(lightBoxShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         glUniformMatrix4fv(glGetUniformLocation(myShader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
         glUniformMatrix4fv(glGetUniformLocation(myShader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
@@ -212,7 +212,7 @@ int main(int argc, char** argv)
         
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         hdrShader.Use();
-        glUniform1i(glGetUniformLocation(hdrShader.Program, "exposure"), 0.5);
+        glUniform1i(glGetUniformLocation(hdrShader.Program, "exposure"), 0.2);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, colorBuffer);
         drawQuad();
