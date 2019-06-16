@@ -7,4 +7,4 @@ The tools required to run this program.
 After downloading this file just type the following command from terminal.
 
 1. gcc main.cpp -o main -lGL -lGLU -lGLEW -lglfw -lSOIL
-2 ./main
+2. ./main
